@@ -51,7 +51,7 @@ public class dddd : MonoBehaviour
             print($"{item.Key}가 {item.Value}개 존재합니다.");
         }
 
-        // 7. 가장 많이 가진 아이템 찾기 및 총 합계 구하기
+        //  가장 많이 가진 아이템 찾기 및 총 합계 구하기
         int totalSum = 0;      // 합계를 저장할 변수
         int maxCount = -1;     // 가장 큰 개수를 저장할 변수
         string maxItemName = ""; // 가장 많은 아이템 이름을 저장할 변수
