@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class dddd : MonoBehaviour
+{
+    //  아이템 이름과 개수를 저장 (3종류 이상)
+    Dictionary<string, int> intven = new Dictionary<string, int>()
+    {
+        {"에고 장비", 1},
+        {"캐서린", 100},
+        {"바이올린", 0}
+    };
+
+    void Start()
+    {
+        string useitem_1 = "바이올린";
+        if (intven.ContainsKey(useitem_1))
+        {
+            print("힌들리에게 줄 바이올린이 보입니다.");
+            intven[useitem_1]++; // 아이템 획득 시 1 증가
+            Debug.Log("힌들리에게 줄 바이올린을 획득했습니다.");
+        }
+
+        if (intven.ContainsKey(useitem_1))
+        {
+            
+            if (intven[useitem_1] > 0)
+            {
+                print("길거리에서 히스클리프를 봅니다.");
+                intven[useitem_1]--; // 아이템 사용 시 1 감소
+                Debug.Log("바이올린 옆에 히스클리프를 데리고 다녀서 깨졌습니다.");
+            }
+        }
+
+        string useitem_2 = "아라야";
+        if (intven.ContainsKey(useitem_2))
+        {
+            // 내용 없음
+        }
+        else
+        {
+            // 존재하지 않는 아이템 사용 시 안내 문구
+            print("존재하지 않습니다. 다시 입력해주세요");
+        }
+
+        print("--- 현재 인벤토리 전체 목록 ---");
+        foreach (var item in intven)
+        {
+           
+            print($"{item.Key}가 {item.Value}개 존재합니다.");
+        }
+
+        // 7. 가장 많이 가진 아이템 찾기 및 총 합계 구하기
+        int totalSum = 0;      // 합계를 저장할 변수
+        int maxCount = -1;     // 가장 큰 개수를 저장할 변수
+        string maxItemName = ""; // 가장 많은 아이템 이름을 저장할 변수
+
+        foreach (var item in intven)
+        {
+            // 모든 아이템의 개수를 더함
+            totalSum += item.Value;
+
+            // 현재 아이템이 지금까지 찾은 최대 개수보다 많다면 업데이트
+            if (item.Value > maxCount)
+            {
+                maxCount = item.Value;
+                maxItemName = item.Key;
+            }
+        }
+
+        // 결과 출력
+        print($"가장 많이 가진 아이템은 {maxItemName}이며, {maxCount}개 가지고 있습니다.");
+        print($"아이템의 총 개수 합계는 {totalSum}개입니다.");
+    }
+}
